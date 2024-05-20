@@ -7,12 +7,12 @@ kcoreaddons_add_plugin(OpenVoiceStyle SOURCES ${OpenVoiceStyle_SRCS} INSTALL_NAM
 
 target_link_libraries(OpenVoiceStyle
     PUBLIC
-        Qt::Core
+        Qt5::Core
         KF5::Kirigami2
     PRIVATE
-        Qt::DBus
-        Qt::Qml
-        Qt::Quick
+        Qt5::DBus
+        Qt5::Qml
+        Qt5::Quick
         KF5::GuiAddons
         KF5::ConfigWidgets
         KF5::IconThemes
