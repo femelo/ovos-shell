@@ -7,6 +7,7 @@
 #include <QObject>
 #include <QIcon>
 #include <QColor>
+#include <QPointer>
 #include <QWindow>
 #include <QFileSystemWatcher>
 
