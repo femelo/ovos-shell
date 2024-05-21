@@ -127,16 +127,18 @@ void OvosTheme::syncWindow(){
 
 bool OvosTheme::event(QEvent *event)
 {
-    if (event->type() == Kirigami::PlatformThemeEvents::DataChangedEvent::type) {
-        syncColors();
-    }
-    if (event->type() == Kirigami::PlatformThemeEvents::ColorSetChangedEvent::type) {
-        syncColors();
-    }
-    if (event->type() == Kirigami::PlatformThemeEvents::ColorGroupChangedEvent::type) {
-        syncColors();
-    }
-    return PlatformTheme::event(event);
+    // if (event->type() == Kirigami::PlatformThemeEvents::DataChangedEvent::type) {
+    //     syncColors();
+    // }
+    // if (event->type() == Kirigami::PlatformThemeEvents::ColorSetChangedEvent::type) {
+    //     syncColors();
+    // }
+    // if (event->type() == Kirigami::PlatformThemeEvents::ColorGroupChangedEvent::type) {
+    //     syncColors();
+    // }
+    syncColors();
+    // return PlatformTheme::event(event);
+    return true;
 }
 
 void OvosTheme::readConfig()
@@ -191,11 +193,11 @@ QIcon OvosTheme::iconFromTheme(const QString &name, const QColor &customColor)
         }
     }
 
-    bool hadPalette = KIconLoader::global()->hasCustomPalette();
+    // bool hadPalette = KIconLoader::global()->hasCustomPalette();
     QPalette olderPalette = KIconLoader::global()->customPalette();
 
     auto cleanup = qScopeGuard([&] {
-        if (hadPalette) {
+        if (olderPalette) {
             KIconLoader::global()->setCustomPalette(olderPalette);
         } else {
             KIconLoader::global()->resetPalette();
