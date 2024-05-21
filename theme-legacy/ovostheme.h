@@ -7,6 +7,7 @@
 #include <QObject>
 #include <QIcon>
 #include <QColor>
+#include <QWindow>
 #include <QFileSystemWatcher>
 
 class OvosTheme : public Kirigami::PlatformTheme
