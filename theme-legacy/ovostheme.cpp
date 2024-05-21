@@ -5,7 +5,7 @@
 #include <KSharedConfig>
 #include <QStandardPaths>
 
-#include <QLatin1String>
+#include <QString>
 #include <QScopeGuard>
 #include <QPalette>
 #include <KIconLoader>
@@ -144,22 +144,22 @@ bool OvosTheme::event(QEvent *event)
 
 void OvosTheme::readConfig()
 {
-    static KSharedConfigPtr config = KSharedConfig::openConfig(QLatin1String("OvosTheme"));
-    static KConfigGroup grp(config, QLatin1String("ColorScheme"));
+    static KSharedConfigPtr config = KSharedConfig::openConfig(QString("OvosTheme"));
+    static KConfigGroup grp(config, QString("ColorScheme"));
 
     if (grp.isValid()) {
-           m_themeStyle = grp.readEntry(QLatin1String("themeStyle"), QLatin1String("dark")); 
-           if (m_themeStyle == QLatin1String("dark") || m_themeStyle == QLatin1String("Dark")) {
-               m_primaryColor = grp.readEntry(QLatin1String("primaryColor"), "#313131");
-               m_textColor = grp.readEntry(QLatin1String("textColor"), "#F1F1F1");
+           m_themeStyle = grp.readEntry(QString("themeStyle"), QString("dark")); 
+           if (m_themeStyle == QString("dark") || m_themeStyle == QString("Dark")) {
+               m_primaryColor = grp.readEntry(QString("primaryColor"), "#313131");
+               m_textColor = grp.readEntry(QString("textColor"), "#F1F1F1");
            } else {
-               m_primaryColor = grp.readEntry(QLatin1String("textColor"), "#F1F1F1");
-               m_textColor = grp.readEntry(QLatin1String("primaryColor"), "#313131");
+               m_primaryColor = grp.readEntry(QString("textColor"), "#F1F1F1");
+               m_textColor = grp.readEntry(QString("primaryColor"), "#313131");
            }
 
-           m_secondaryColor = grp.readEntry(QLatin1String("secondaryColor"), "#F70D1A");
+           m_secondaryColor = grp.readEntry(QString("secondaryColor"), "#F70D1A");
     } else {
-        m_themeStyle = QLatin1String("dark");
+        m_themeStyle = QString("dark");
         m_primaryColor = "#313131";
         m_secondaryColor = "#F70D1A";
         m_textColor = "#F1F1F1";
@@ -168,8 +168,8 @@ void OvosTheme::readConfig()
 
 void OvosTheme::syncConfigChanges()
 {
-    static KSharedConfigPtr config = KSharedConfig::openConfig(QLatin1String("OvosTheme"));
-    static KConfigGroup grp(config, QLatin1String("ColorScheme"));
+    static KSharedConfigPtr config = KSharedConfig::openConfig(QString("OvosTheme"));
+    static KConfigGroup grp(config, QString("ColorScheme"));
     config->reparseConfiguration();
     readConfig();
     syncColors();
