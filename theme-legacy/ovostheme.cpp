@@ -5,6 +5,7 @@
 #include <KSharedConfig>
 #include <QStandardPaths>
 
+#include <QLatin1String>
 #include <QScopeGuard>
 #include <QPalette>
 #include <KIconLoader>
@@ -197,7 +198,7 @@ QIcon OvosTheme::iconFromTheme(const QString &name, const QColor &customColor)
     QPalette olderPalette = KIconLoader::global()->customPalette();
 
     auto cleanup = qScopeGuard([&] {
-        if (olderPalette) {
+        if (olderPalette != QPalette()) {
             KIconLoader::global()->setCustomPalette(olderPalette);
         } else {
             KIconLoader::global()->resetPalette();
