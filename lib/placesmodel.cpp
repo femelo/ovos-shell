@@ -23,6 +23,7 @@
 #include <QProcess>
 #include <QDBusInterface>
 #include <QDBusReply>
+#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>

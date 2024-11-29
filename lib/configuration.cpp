@@ -4,6 +4,7 @@
 #include <KUser>
 #include <QColor>
 #include <QDir>
+#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
@@ -178,7 +179,7 @@ void Configuration::updateSchemeList(){
     m_finalObject = QJsonObject({
         {QLatin1String("schemes"), m_jsonArray}
     });
-    m_schemeList.insert(m_finalObject.toVariantMap());
+    m_schemeList.unite(m_finalObject.toVariantMap());
     updateSelectedScheme();
     emit schemeListChanged();
 }
